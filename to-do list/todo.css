@@ -98,5 +98,10 @@ ul li span{
     text-align: center;
     font-size: 22px;
     line-height: 40px;
+    border-radius: 50%;
 
+}
+
+ul li span:hover{
+    background: #edeef0;
 }
