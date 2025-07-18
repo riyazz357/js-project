@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Textile Company</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Textile Co.</h1>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h2>Welcome to Textile Co.</h2>
+    <p>Your one-stop shop for premium textiles.</p>
+    <a href="#shop" class="cta">Shop Now</a>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>Our textiles are crafted with precision and care, ensuring the highest quality for your needs.</p>
+  </section>
+
+  <!-- Shop Section -->
+  <section id="shop" class="shop">
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="fabric1.jpg" alt="Fabric 1">
+        <h3>Fabric 1</h3>
+        <p>$20.00</p>
+        <button>Add to Cart</button>
+      </div>
+      <!-- Add more products similarly -->
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Popup Modal -->
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      <h2>Welcome Back!</h2>
+      <p>Sign in to enjoy a personalized experience.</p>
+      <button id="sign-in-btn">Sign In</button>
+      <button id="close-popup">Close</button>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
