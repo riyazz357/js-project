@@ -1,1 +1,1 @@
-this is a git repo for the basic js project 
+some of the basic js project 
