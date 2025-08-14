@@ -1,1 +1,2 @@
-some of the basic js project 
+Basic JavaScript Projects Collection
+A curated collection of fun, simple, and interactive mini-projects built with HTML, CSS, and vanilla JavaScript. This repository is perfect for beginners looking to see practical examples of fundamental web development concepts.
