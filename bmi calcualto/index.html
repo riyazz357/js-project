@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom transition for smooth color changes */
+        #resultCard {
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main calculator card -->
+    <div class="bg-white w-full max-w-md p-8 rounded-2xl shadow-lg">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-800">BMI Calculator</h1>
+            <p class="text-gray-500 mt-2">Enter your weight and height to calculate your BMI.</p>
+        </div>
+        
+        <!-- Input Fields -->
+        <div class="space-y-6">
+            <div>
+                <label for="weight" class="block text-sm font-medium text-gray-700 mb-1">Weight (kg)</label>
+                <input type="number" id="weight" placeholder="e.g., 70" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+            <div>
+                <label for="height" class="block text-sm font-medium text-gray-700 mb-1">Height (cm)</label>
+                <input type="number" id="height" placeholder="e.g., 175" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <button id="calculateBtn" class="w-full mt-8 bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 active:scale-95 transition-transform duration-150 shadow-md">
+            Calculate BMI
+        </button>
+
+        <!-- Result Display Area -->
+        <div id="resultCard" class="mt-8 p-6 rounded-lg bg-gray-100 text-center min-h-[120px]">
+            <h2 id="bmiValue" class="text-4xl font-bold text-gray-800">--</h2>
+            <p id="bmiCategory" class="text-lg font-medium text-gray-600 mt-2">Enter your details to see your result</p>
+        </div>
+        
+        <!-- Error Message Area -->
+        <p id="error" class="text-red-500 text-center mt-4 h-5"></p>
+
+    </div>
+
+    <script>
+        const weightInput = document.getElementById('weight');
+        const heightInput = document.getElementById('height');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const bmiValueEl = document.getElementById('bmiValue');
+        const bmiCategoryEl = document.getElementById('bmiCategory');
+        const resultCardEl = document.getElementById('resultCard');
+        const errorEl = document.getElementById('error');
+
+       
+        calculateBtn.addEventListener('click', () => {
+            const weight = parseFloat(weightInput.value);
+            const height = parseFloat(heightInput.value);
+
+           
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                errorEl.textContent = 'Please enter valid weight and height.';
+                
+                bmiValueEl.textContent = '--';
+                bmiCategoryEl.textContent = 'Enter your details to see your result';
+                resultCardEl.className = 'mt-8 p-6 rounded-lg bg-gray-100 text-center min-h-[120px]';
+                return;
+            }
+            
+            
+            errorEl.textContent = '';
+
+            // --- 2. BMI Calculation ---
+            // Convert height from cm to meters
+            const heightInMeters = height / 100;
+            // Calculate BMI: weight (kg) / (height (m))^2
+            const bmi = weight / (heightInMeters * heightInMeters);
+            
+            // Round BMI to one decimal place
+            const roundedBmi = bmi.toFixed(1);
+
+            // --- 3. Determine BMI Category and Update UI ---
+            let category = '';
+            let cardClasses = 'mt-8 p-6 rounded-lg text-center min-h-[120px] text-white ';
+
+            if (bmi < 18.5) {
+                category = 'Underweight';
+                cardClasses += 'bg-yellow-400';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                category = 'Normal weight';
+                cardClasses += 'bg-green-500';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                category = 'Overweight';
+                cardClasses += 'bg-orange-500';
+            } else {
+                category = 'Obesity';
+                cardClasses += 'bg-red-600';
+            }
+
+           
+            bmiValueEl.textContent = roundedBmi;
+            bmiCategoryEl.textContent = category;
+            resultCardEl.className = cardClasses; lor
+        });
+    </script>
+</body>
+</html>
